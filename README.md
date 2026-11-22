@@ -1,4 +1,22 @@
-# airlock
+<div align="center">
+
+# Airlock
+
+<h3>A disposable sandbox for every risky tool call</h3>
+
+[![Status](https://img.shields.io/badge/status-design%20stage-orange?style=flat-square)](ROADMAP.md)
+[![Go 1.26+](https://img.shields.io/badge/go-1.26+-00ADD8?style=flat-square)](https://go.dev/dl/)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
+
+---
+
+[How it works](#how-it-works) · [Thesis](THESIS.md) · [Roadmap](ROADMAP.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md)
+
+</div>
+
+---
+
+## What is Airlock?
 
 A disposable sandbox for every risky tool call. `airlock` runs each tool call
 an AI agent makes (shell commands, code execution, file edits, package
@@ -11,6 +29,8 @@ before anything is copied back to the real system.
 > [OpenAstra](https://openastra.org) research agenda, area VIII: AI Runtime
 > Security.
 
+---
+
 ## The problem
 
 Coding and ops agents run commands on real machines with the developer's
@@ -19,6 +39,8 @@ long-lived, shared across a whole session, and allowed to reach the network,
 so one bad command can still read secrets or send them out. What's missing is
 isolation at the level of the individual call, with a review step between
 "the command ran" and "its effects are real".
+
+---
 
 ## How it works
 
@@ -34,6 +56,8 @@ isolation at the level of the individual call, with a review step between
    changes are copied back; everything else is shown to the user. The sandbox
    is destroyed either way.
 
+---
+
 ## Example (proposed)
 
 ```console
@@ -47,12 +71,16 @@ postinstall script wrote ~/.ssh/authorized_keys  BLOCKED (outside workspace)
 Result: not committed. 2 policy violations. Run `airlock show vm-3f1a` for details.
 ```
 
+---
+
 ## Planned surfaces
 
 - CLI (`airlock run`) and a shell shim for agents that call `bash -c`
 - MCP proxy mode for tool servers
 - Policy file: network allowlist, writable paths, secrets to mount, CPU/time limits
 - Effect reports in JSON for audit and for [Rewind](https://github.com/sadayamuthu/rewind)
+
+---
 
 ## Maps to
 
@@ -62,6 +90,8 @@ Result: not committed. 2 policy violations. Run `airlock show vm-3f1a` for detai
 | OWASP LLM Top 10 (2025) | LLM05 Improper Output Handling, LLM06 Excessive Agency |
 | NIST SP 800-53 Rev. 5 | SC-39 Process Isolation, SC-44 Detonation Chambers, SC-7 Boundary Protection |
 
+---
+
 ## Design principles
 
 - **One call, one sandbox.** Nothing carries over between calls unless committed.
@@ -69,17 +99,19 @@ Result: not committed. 2 policy violations. Run `airlock show vm-3f1a` for detai
 - **Effects are reviewed before they're real.**
 - **Fast enough to leave on.** Target sub-second sandbox start for the common case.
 
+---
+
 ## Roadmap
 
-1. Policy format and effect report schema
-2. Linux microVM backend with workspace snapshots
-3. Shell shim for coding agents
-4. MCP proxy mode
-5. WASM backend and macOS support
+The plan, from the first working version to 1.0, is in [ROADMAP.md](ROADMAP.md). The reasoning behind the project, and what would make us stop, is in [THESIS.md](THESIS.md).
+
+---
 
 ## Built on switchyard
 
 `airlock` will be a Go binary built on [switchyard](https://github.com/sadayamuthu/switchyard), OpenAstra's shared MCP proxy core: MCP proxy mode is a switchyard hook that routes risky calls into a sandbox. It stacks with the other switchyard tools by chaining (`agent → fuse → intentlock → taintline → rewind → MCP server`).
+
+---
 
 ## Related OpenAstra projects
 
@@ -87,6 +119,32 @@ Result: not committed. 2 policy violations. Run `airlock show vm-3f1a` for detai
 - [Rewind](https://github.com/sadayamuthu/rewind): undo for effects that were committed
 - OpenEQ (in the lab): egress records across tools
 
+---
+
+## Contributing
+
+Design feedback, real-world cases and fixes are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to help while the project is at the design stage, and [GOVERNANCE.md](GOVERNANCE.md) for how decisions are made.
+
+---
+
+## Security
+
+Please report vulnerabilities privately through [GitHub security advisories](https://github.com/sadayamuthu/airlock/security/advisories/new), not in a public issue. See [SECURITY.md](SECURITY.md) for what to include and what's in scope.
+
+---
+
 ## License
 
-To be decided before the first release.
+[Apache License 2.0](LICENSE)
+
+---
+
+<div align="center">
+
+**Airlock: a disposable sandbox for every risky tool call**
+
+Airlock is managed by [OpenAstra](https://openastra.org)
+
+[GitHub](https://github.com/sadayamuthu/airlock) · [Thesis](THESIS.md) · [Roadmap](ROADMAP.md)
+
+</div>
