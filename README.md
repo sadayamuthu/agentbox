@@ -77,6 +77,10 @@ Result: not committed. 2 policy violations. Run `airlock show vm-3f1a` for detai
 4. MCP proxy mode
 5. WASM backend and macOS support
 
+## Built on switchyard
+
+`airlock` will be a Go binary built on [switchyard](https://github.com/sadayamuthu/switchyard), OpenAstra's shared MCP proxy core: MCP proxy mode is a switchyard hook that routes risky calls into a sandbox. It stacks with the other switchyard tools by chaining (`agent → fuse → intentlock → taintline → rewind → MCP server`).
+
 ## Related OpenAstra projects
 
 - [ZeroEgress](https://github.com/sadayamuthu/zero-egress): the same "nothing leaves" stance, for the editor
