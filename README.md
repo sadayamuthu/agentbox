@@ -1,6 +1,6 @@
 <div align="center">
 
-# Airlock
+# AgentBox
 
 <h3>A disposable sandbox for every risky tool call</h3>
 
@@ -16,9 +16,9 @@
 
 ---
 
-## What is Airlock?
+## What is AgentBox?
 
-A disposable sandbox for every risky tool call. `airlock` runs each tool call
+A disposable sandbox for every risky tool call. `agentbox` runs each tool call
 an AI agent makes (shell commands, code execution, file edits, package
 installs) in a short-lived microVM or WebAssembly sandbox with no network by
 default and a scratch filesystem. The results are checked against a policy
@@ -44,7 +44,7 @@ isolation at the level of the individual call, with a review step between
 
 ## How it works
 
-1. **Intercept.** `airlock` wraps the agent's tool layer (an MCP proxy or a
+1. **Intercept.** `agentbox` wraps the agent's tool layer (an MCP proxy or a
    shell shim) and catches calls marked risky by policy.
 2. **Boot.** Start a fresh sandbox per call: Firecracker microVM for full
    Linux workloads, or a WASM runtime for lighter ones. It starts from a
@@ -61,24 +61,24 @@ isolation at the level of the individual call, with a review step between
 ## Example (proposed)
 
 ```console
-$ airlock run -- npm install left-pad-pro
+$ agentbox run -- npm install left-pad-pro
 sandbox   vm-3f1a  (no network, workspace snapshot, 2 vCPU, 30s)
 attempted network: registry.npmjs.org:443   allowed by policy: npm-registry
 attempted network: 185.199.x.x:4444        BLOCKED (not in policy)
 file changes: package.json, package-lock.json, node_modules/ (1,204 files)
 postinstall script wrote ~/.ssh/authorized_keys  BLOCKED (outside workspace)
 
-Result: not committed. 2 policy violations. Run `airlock show vm-3f1a` for details.
+Result: not committed. 2 policy violations. Run `agentbox show vm-3f1a` for details.
 ```
 
 ---
 
 ## Planned surfaces
 
-- CLI (`airlock run`) and a shell shim for agents that call `bash -c`
+- CLI (`agentbox run`) and a shell shim for agents that call `bash -c`
 - MCP proxy mode for tool servers
 - Policy file: network allowlist, writable paths, secrets to mount, CPU/time limits
-- Effect reports in JSON for audit and for [Rewind](https://github.com/sadayamuthu/rewind)
+- Effect reports in JSON for audit and for [AgentRewind](https://github.com/sadayamuthu/agentrewind)
 
 ---
 
@@ -109,14 +109,14 @@ The plan, from the first working version to 1.0, is in [ROADMAP.md](ROADMAP.md).
 
 ## Built on switchyard
 
-`airlock` will be a Go binary built on [switchyard](https://github.com/sadayamuthu/switchyard), OpenAstra's shared MCP proxy core: MCP proxy mode is a switchyard hook that routes risky calls into a sandbox. It stacks with the other switchyard tools by chaining (`agent → fuse → intentlock → taintline → rewind → MCP server`).
+`agentbox` will be a Go binary built on [switchyard](https://github.com/sadayamuthu/switchyard), OpenAstra's shared MCP proxy core: MCP proxy mode is a switchyard hook that routes risky calls into a sandbox. It stacks with the other switchyard tools by chaining (`agent → agentfuse → agentlock → agenttaint → agentrewind → MCP server`).
 
 ---
 
 ## Related OpenAstra projects
 
 - [ZeroEgress](https://github.com/sadayamuthu/zero-egress): the same "nothing leaves" stance, for the editor
-- [Rewind](https://github.com/sadayamuthu/rewind): undo for effects that were committed
+- [AgentRewind](https://github.com/sadayamuthu/agentrewind): undo for effects that were committed
 - OpenEQ (in the lab): egress records across tools
 
 ---
@@ -129,7 +129,7 @@ Design feedback, real-world cases and fixes are welcome. See [CONTRIBUTING.md](C
 
 ## Security
 
-Please report vulnerabilities privately through [GitHub security advisories](https://github.com/sadayamuthu/airlock/security/advisories/new), not in a public issue. See [SECURITY.md](SECURITY.md) for what to include and what's in scope.
+Please report vulnerabilities privately through [GitHub security advisories](https://github.com/sadayamuthu/agentbox/security/advisories/new), not in a public issue. See [SECURITY.md](SECURITY.md) for what to include and what's in scope.
 
 ---
 
@@ -141,10 +141,10 @@ Please report vulnerabilities privately through [GitHub security advisories](htt
 
 <div align="center">
 
-**Airlock: a disposable sandbox for every risky tool call**
+**AgentBox: a disposable sandbox for every risky tool call**
 
-Airlock is managed by [OpenAstra](https://openastra.org)
+AgentBox is managed by [OpenAstra](https://openastra.org)
 
-[GitHub](https://github.com/sadayamuthu/airlock) · [Thesis](THESIS.md) · [Roadmap](ROADMAP.md)
+[GitHub](https://github.com/sadayamuthu/agentbox) · [Thesis](THESIS.md) · [Roadmap](ROADMAP.md)
 
 </div>

@@ -1,8 +1,8 @@
-# Contributing to Airlock
+# Contributing to AgentBox
 
-Thanks for helping. Airlock runs each risky tool call an AI agent makes in a short-lived microVM or WebAssembly sandbox with no network and no secrets by default, and checks the call's effects against a policy before anything is copied back.
+Thanks for helping. AgentBox runs each risky tool call an AI agent makes in a short-lived microVM or WebAssembly sandbox with no network and no secrets by default, and checks the call's effects against a policy before anything is copied back.
 
-Airlock is at the **design stage**: the README and
+AgentBox is at the **design stage**: the README and
 [THESIS.md](THESIS.md) describe what it will do, and there is little or no
 code yet. Right now the most useful contributions are on the design itself.
 
@@ -22,8 +22,8 @@ code yet. Right now the most useful contributions are on the design itself.
   work on tells us more than any feature request.
 - **Pick up an area** from the "Wanted" list in
   [MAINTAINERS.md](MAINTAINERS.md), or an issue labelled
-  [`good first issue`](https://github.com/sadayamuthu/airlock/labels/good%20first%20issue)
-  or [`help wanted`](https://github.com/sadayamuthu/airlock/labels/help%20wanted).
+  [`good first issue`](https://github.com/sadayamuthu/agentbox/labels/good%20first%20issue)
+  or [`help wanted`](https://github.com/sadayamuthu/agentbox/labels/help%20wanted).
 
 For anything larger than a small fix, open an issue first so we can agree on
 the approach before you write the code.
@@ -42,11 +42,11 @@ still show the problem. Never paste credentials.
 
 ## Development setup
 
-Airlock is written in **Go 1.26** or newer, like every new OpenAstra tool.
+AgentBox is written in **Go 1.26** or newer, like every new OpenAstra tool.
 
 ```sh
-git clone https://github.com/sadayamuthu/airlock.git
-cd airlock
+git clone https://github.com/sadayamuthu/agentbox.git
+cd agentbox
 go build ./...
 ```
 
@@ -75,12 +75,12 @@ before your change and passes after it.
 ## Security
 
 Please don't report security problems in a public issue. Use
-[**Report a vulnerability**](https://github.com/sadayamuthu/airlock/security/advisories/new)
+[**Report a vulnerability**](https://github.com/sadayamuthu/agentbox/security/advisories/new)
 on the repository's Security tab instead. See [SECURITY.md](SECURITY.md) for
 what to include and what's in scope.
 
 ## License
 
-Airlock is licensed under the [Apache License 2.0](LICENSE). By
+AgentBox is licensed under the [Apache License 2.0](LICENSE). By
 contributing, you agree that your contributions are licensed under the same
 license.

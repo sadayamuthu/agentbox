@@ -4,14 +4,14 @@
 
 Please don't report security problems in a public issue, pull request or
 discussion. Use
-[**Report a vulnerability**](https://github.com/sadayamuthu/airlock/security/advisories/new)
+[**Report a vulnerability**](https://github.com/sadayamuthu/agentbox/security/advisories/new)
 on the repository's Security tab instead. Only the maintainers can see the
 report.
 
 Include what you can of:
 
-- the Airlock version (`airlock version`) or commit, your Go version and OS
-- how Airlock was used, and its configuration with secrets removed
+- the AgentBox version (`agentbox version`) or commit, your Go version and OS
+- how AgentBox was used, and its configuration with secrets removed
 - steps to reproduce
 - what happened and what you expected
 
@@ -21,14 +21,14 @@ rather it didn't.
 
 ## Supported versions
 
-Airlock is at the design stage and has no releases yet. Once it does,
+AgentBox is at the design stage and has no releases yet. Once it does,
 fixes land in the latest release only, until 1.0.
 
 ## What counts
 
-Airlock intercepts tool calls marked risky by policy, runs each in a fresh sandbox, and copies allowed effects back to your workspace.
+AgentBox intercepts tool calls marked risky by policy, runs each in a fresh sandbox, and copies allowed effects back to your workspace.
 
-Airlock is a security tool, so anything that breaks one of these promises
+AgentBox is a security tool, so anything that breaks one of these promises
 is a security issue:
 
 - **Isolation per call.** Nothing carries over between sandboxes unless committed. A way for one call to affect another's sandbox is in scope.

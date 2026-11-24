@@ -15,7 +15,7 @@ None yet.
 
 ## Wanted
 
-Airlock has one maintainer, and wants more, especially from organizations
+AgentBox has one maintainer, and wants more, especially from organizations
 not already represented. Areas where help would make the biggest difference:
 
 - the Firecracker backend and workspace snapshots,

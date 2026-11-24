@@ -1,4 +1,4 @@
-# Airlock: thesis
+# AgentBox: thesis
 
 **In one line:** the right unit of isolation for an agent is the single tool
 call, with a review step between "it ran" and "its effects are real".
@@ -33,7 +33,7 @@ where per-call isolation is an engineering problem, not a research one.
 - Sandbox start is sub-second for the common case, so developers leave it on.
 - It blocks the effects of known malicious-package and exfiltration patterns
   in a public test set.
-- At least one popular coding agent is usable with Airlock through the shell
+- At least one popular coding agent is usable with AgentBox through the shell
   shim or MCP proxy with no workflow complaints.
 
 ## What would prove us wrong
@@ -51,5 +51,5 @@ Detecting malicious intent in commands, or replacing container platforms.
 ## Where it fits
 
 Area VIII, AI Runtime Security. Effect reports feed
-[Rewind](https://github.com/sadayamuthu/rewind); hosts risky
+[AgentRewind](https://github.com/sadayamuthu/agentrewind); hosts risky
 [AgentChaos](https://github.com/sadayamuthu/agentchaos) experiments.

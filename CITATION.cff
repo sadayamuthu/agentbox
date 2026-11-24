@@ -1,9 +1,9 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it using these metadata."
 type: software
-title: "Airlock: A disposable sandbox for every risky tool call"
+title: "AgentBox: A disposable sandbox for every risky tool call"
 abstract: >-
-  Airlock runs each risky tool call an AI agent makes in a short-lived microVM
+  AgentBox runs each risky tool call an AI agent makes in a short-lived microVM
   or WebAssembly sandbox with no network and no secrets by default, and checks
   the call's effects against a policy before anything is copied back.
 authors:
@@ -11,7 +11,7 @@ authors:
     given-names: Karthikeyan
     orcid: "https://orcid.org/0009-0008-3539-6048"
 license: Apache-2.0
-repository-code: "https://github.com/sadayamuthu/airlock"
+repository-code: "https://github.com/sadayamuthu/agentbox"
 url: "https://openastra.org"
 keywords:
   - AI agents
